@@ -4,3 +4,6 @@ django-appconf
 flake8
 twine
 wheel
+
+pytest
+pytest-django
