@@ -316,10 +316,12 @@ class ConfigTests(TestCase):
         self.assertEqual(tasks.send_email.rate_limit, '50/m')
 
 
+# TODO: use pytest-celery for integration tests instead
 class IntegrationTests(TestCase):
     # We run these tests in ALWAYS_EAGER mode, but they might as well be
     # executed using a real backend (maybe we can add that to the test setup in
     # the future?)
+    # TODO: See note on https://docs.celeryq.dev/en/stable/userguide/testing.html#tasks-and-unit-tests
 
     def setUp(self):
         super(IntegrationTests, self).setUp()

@@ -14,5 +14,6 @@ class CeleryEmailBackend(BaseEmailBackend):
         result_tasks = []
         for chunk in chunked(email_messages, settings.CELERY_EMAIL_CHUNK_SIZE):
             chunk_messages = [email_to_dict(msg) for msg in chunk]
+            # TODO: Add way to delay on commit when specified by django.core.mail send_mail() call?
             result_tasks.append(send_emails.delay(chunk_messages, self.init_kwargs))
         return result_tasks
